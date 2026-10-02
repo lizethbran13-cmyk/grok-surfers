@@ -1,21 +1,26 @@
-GROK SURFERS
-============
+GROK SURFERS 2.0
+================
 
 How to play
-  Double-click index.html (or open it in any browser).
-  No install, no internet, no server. It just runs.
+  Double-click index.html (or open it in any browser, phone or desktop).
+  No install, no internet, no server.
 
 Controls
-  Start / retry     Click, tap, Enter, or Space
-  Switch lanes      Left / Right arrows  or  A / D
-  Jump              Up arrow, W, or Space   (tap on phone)
-  Slide             Down arrow or S
-  Phone / tablet    Swipe left or right to change lanes
-                    Swipe up to jump, swipe down to slide
-  Sound             The ♪ button in the corner
+  Phone / tablet    Swipe left / right to change lanes (swipes register the moment
+                    your finger moves — no need to lift). Swipe up or tap to jump,
+                    swipe down to slide (in the air it slams you down first).
+  Keyboard          Left / Right or A / D lanes · Up / W / Space jump · Down / S slide
+                    P or Esc pause · Enter to start / retry
 
-Goal
-  Auto-run the subway. Dodge trains, jump pink crates, slide
-  under cyan bars, grab gold coins. Speed ramps up. One crash
-  and it's game over — hit Retry and chase your high score
-  (saved on this device).
+What's new in 2.0
+  * Big, bright runner with a white sticker outline, shadow and lane ring;
+    camera sits behind and above, and anything you've passed turns see-through,
+    so you can always see yourself.
+  * Daylight track: tinted lanes, white dashed lane markers, shiny rails,
+    floating ↑ / ↓ hints over barriers you must jump / slide.
+  * Coins everywhere, plus power-ups: Magnet, Jetpack (sky coin trail),
+    Super Sneakers (super jump, smash barriers) and 2x Score.
+  * Ramps up onto train roofs, oncoming trains later in a run, varied patterns.
+  * Speed ramps up gradually. Clipping a train's side is a stumble, not death
+    (two stumbles in quick succession and you're caught).
+  * 5 runner colours, high score + coin bank saved on this device.

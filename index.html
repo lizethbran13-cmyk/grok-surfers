@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="theme-color" content="#1a0a3c">
-  <title>Grok Surfers</title>
+  <meta name="theme-color" content="#3fa9ff">
+  <title>Grok Surfers 2.0</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ff8c42'/%3E%3Ccircle cx='24' cy='28' r='6' fill='%23fff'/%3E%3Ccircle cx='40' cy='28' r='6' fill='%23fff'/%3E%3Ccircle cx='25' cy='29' r='3' fill='%231a1020'/%3E%3Ccircle cx='41' cy='29' r='3' fill='%231a1020'/%3E%3Cpath d='M22 42c6 8 14 8 20 0' fill='none' stroke='%231a1020' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
 </head>
@@ -18,6 +18,7 @@
       <div id="hud-left">
         <div class="label">SCORE</div>
         <div id="score">0</div>
+        <div id="mult" class="hidden">2× SCORE</div>
       </div>
       <div id="hud-mid">
         <div class="label">BEST</div>
@@ -26,24 +27,41 @@
       <div id="hud-right">
         <div class="label">COINS</div>
         <div id="coins"><span class="coin-dot"></span><span id="coin-count">0</span></div>
+        <div id="powers"></div>
       </div>
     </div>
+    <div id="tip"></div>
+    <div id="toast"></div>
 
-    <button id="mute" type="button" aria-label="Toggle sound" title="Sound">♪</button>
+    <button id="pause-btn" class="round hidden" type="button" aria-label="Pause">II</button>
+    <button id="mute" class="round" type="button" aria-label="Toggle sound" title="Sound">♪</button>
 
     <div id="title" class="overlay">
       <div class="panel">
-        <div class="mascot" aria-hidden="true"> grok </div>
-        <h1>GROK<br>SURFERS</h1>
-        <p class="tagline">Surf the subway. Don't hug the train.</p>
+        <h1>GROK<br> SURFERS <span class="ver">2.0</span></h1>
+        <p class="tagline">Dodge trains. Grab coins. Fly with the jetpack.</p>
+        <div class="pick-label">PICK YOUR RUNNER</div>
+        <div id="chars"></div>
         <button id="play" type="button" class="btn pulse">PLAY</button>
-        <p class="hint">
-          <strong>← →</strong> or <strong>A D</strong> lanes &nbsp;·&nbsp;
-          <strong>↑ W Space</strong> jump &nbsp;·&nbsp;
-          <strong>↓ S</strong> slide
+        <p class="hint desk-only">
+          <strong>← →</strong> / <strong>A D</strong> lanes · <strong>↑ W Space</strong> jump · <strong>↓ S</strong> slide · <strong>P</strong> pause
         </p>
-        <p class="hint mobile-only">Swipe to steer · Swipe up to jump · Swipe down to slide</p>
+        <p class="hint mobile-only">Swipe ← → lanes · Swipe ↑ (or tap) jump · Swipe ↓ slide</p>
+        <div class="legend">
+          <span><b class="g">↑</b> jump the striped barriers</span>
+          <span><b class="b">↓</b> slide under blue bars</span>
+          <span><b class="y">⟋</b> ramps take you onto train roofs</span>
+          <span>🧲 🚀 👟 2× power-ups</span>
+        </div>
         <p id="title-best" class="best-line"></p>
+      </div>
+    </div>
+
+    <div id="pause" class="overlay hidden">
+      <div class="panel">
+        <h2>PAUSED</h2>
+        <button id="resume" type="button" class="btn">RESUME</button>
+        <button id="quit" type="button" class="btn ghost">MENU</button>
       </div>
     </div>
 
@@ -54,10 +72,11 @@
         <div class="stats">
           <div><span class="label">SCORE</span><span id="go-score">0</span></div>
           <div><span class="label">COINS</span><span id="go-coins">0</span></div>
+          <div><span class="label">DISTANCE</span><span id="go-dist">0</span></div>
           <div><span class="label">BEST</span><span id="go-best">0</span></div>
         </div>
-        <button id="retry" type="button" class="btn pulse">RETRY</button>
-        <p class="hint">Tap / click or press Enter</p>
+        <button id="retry" type="button" class="btn pulse">RUN AGAIN</button>
+        <button id="menu" type="button" class="btn ghost">CHANGE RUNNER</button>
       </div>
     </div>
   </div>
