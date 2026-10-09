@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* Grok Arcade Hall of Game Records: archived old version 1.0 of grok-surfers. Saves are kept separate from the newest version. */
+(function(){var P='grokOldVersion.grok-surfers.v1:';try{var S=Storage.prototype,g=S.getItem,s=S.setItem,r=S.removeItem;function L(t){try{return t===window.localStorage;}catch(e){return false;}}
+S.getItem=function(k){return g.call(this,L(this)?P+k:k);};S.setItem=function(k,v){return s.call(this,L(this)?P+k:k,v);};S.removeItem=function(k){return r.call(this,L(this)?P+k:k);};}catch(e){}
+window.GROK_OLD_VERSION={repo:'grok-surfers',label:'v1',ver:'1.0',prefix:P};
+function badge(){try{var d=document.createElement('div');d.id='grokOldVerBadge';d.setAttribute('style','position:fixed;left:50%;top:6px;transform:translateX(-50%);z-index:2147483647;background:rgba(20,10,43,.92);color:#ffe14d;font:bold 12px/1.3 system-ui,sans-serif;padding:6px 12px;border-radius:14px;border:2px solid #ff4fd8;box-shadow:0 2px 10px rgba(0,0,0,.4);pointer-events:none;transition:opacity .8s;text-align:center;max-width:90vw');d.textContent='\uD83D\uDCFC OLD VERSION 1.0 \u00b7 from the Hall of Game Records \u00b7 separate save';document.body.appendChild(d);setTimeout(function(){d.style.opacity='0';},6000);setTimeout(function(){if(d.parentNode)d.parentNode.removeChild(d);},7000);}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',badge);else badge();})();</script>
+<meta name="robots" content="noindex">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#1a0a3c">
+  <title>Grok Surfers</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ff8c42'/%3E%3Ccircle cx='24' cy='28' r='6' fill='%23fff'/%3E%3Ccircle cx='40' cy='28' r='6' fill='%23fff'/%3E%3Ccircle cx='25' cy='29' r='3' fill='%231a1020'/%3E%3Ccircle cx='41' cy='29' r='3' fill='%231a1020'/%3E%3Cpath d='M22 42c6 8 14 8 20 0' fill='none' stroke='%231a1020' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+</head>
+<body>
+  <div id="wrap">
+    <canvas id="game"></canvas>
+
+    <div id="hud" class="hidden">
+      <div id="hud-left">
+        <div class="label">SCORE</div>
+        <div id="score">0</div>
+      </div>
+      <div id="hud-mid">
+        <div class="label">BEST</div>
+        <div id="best">0</div>
+      </div>
+      <div id="hud-right">
+        <div class="label">COINS</div>
+        <div id="coins"><span class="coin-dot"></span><span id="coin-count">0</span></div>
+      </div>
+    </div>
+
+    <button id="mute" type="button" aria-label="Toggle sound" title="Sound">♪</button>
+
+    <div id="title" class="overlay">
+      <div class="panel">
+        <div class="mascot" aria-hidden="true"> grok </div>
+        <h1>GROK<br>SURFERS</h1>
+        <p class="tagline">Surf the subway. Don't hug the train.</p>
+        <button id="play" type="button" class="btn pulse">PLAY</button>
+        <p class="hint">
+          <strong>← →</strong> or <strong>A D</strong> lanes &nbsp;·&nbsp;
+          <strong>↑ W Space</strong> jump &nbsp;·&nbsp;
+          <strong>↓ S</strong> slide
+        </p>
+        <p class="hint mobile-only">Swipe to steer · Swipe up to jump · Swipe down to slide</p>
+        <p id="title-best" class="best-line"></p>
+      </div>
+    </div>
+
+    <div id="gameover" class="overlay hidden">
+      <div class="panel">
+        <h2 id="go-title">CRASHED!</h2>
+        <p id="new-best" class="hidden shine">★ NEW HIGH SCORE ★</p>
+        <div class="stats">
+          <div><span class="label">SCORE</span><span id="go-score">0</span></div>
+          <div><span class="label">COINS</span><span id="go-coins">0</span></div>
+          <div><span class="label">BEST</span><span id="go-best">0</span></div>
+        </div>
+        <button id="retry" type="button" class="btn pulse">RETRY</button>
+        <p class="hint">Tap / click or press Enter</p>
+      </div>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
